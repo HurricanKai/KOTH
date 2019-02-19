@@ -114,7 +114,7 @@
 	function loadglobal()
 	{
 		const table = document.getElementById('leaderboard_global');
-		fetch(`http://cors.io/?https://api.kingofthehat.com/leaderboard`)
+		fetch(`https://cors.io/?https://api.kingofthehat.com/leaderboard`)
 		  .then((resp) => resp.json()) // Transform the data into json
 		  .then(function(data) {
 			let authors = data.users; // Get the results
@@ -140,7 +140,7 @@
 		function loadhouse(house)
 	{
 		let table = document.getElementById('leaderboard_' + house);
-		let url = 'http://cors.io/?https://api.kingofthehat.com/leaderboard?house=' + house;
+		let url = 'https://cors.io/?https://api.kingofthehat.com/leaderboard?house=' + house;
 		fetch(url)
 		  .then((resp) => resp.json()) // Transform the data into json
 		  .then(function(data) {
@@ -166,7 +166,7 @@
 
 	function loadsubs()
 	{
-		fetch(`http://cors.io/?https://api.kingofthehat.com/houses/hypesquad`)
+		fetch(`https://cors.io/?https://api.kingofthehat.com/houses/hypesquad`)
 		.then((resp) => resp.json())
 		.then(function(data) {
 			let global_sub = document.getElementById('global_sub'),
