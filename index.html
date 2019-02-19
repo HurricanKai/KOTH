@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        Leaderboard
+      </h1>
+      <p class="subtitle">
+        Fetched from https://api.kingofthehat.com/leaderboard
+      </p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        Normal Leaderboard
+      </h1>
+	  <table class="table">
+		<thead>
+			<tr>
+				<th>Place</th>
+				<th>Name</th>
+				<th>Points</th>
+			</tr>
+		</thead>
+		<tbody id="leaderboard_normal">
+		</tbody>
+	  </table>
+    </div>
+	
+  </section>
+  <script>
+	  function createNode(element) {
+		return document.createElement(element); // Create the type of element you pass in the parameters
+	  }
+
+	  function append(parent, el) {
+		return parent.appendChild(el); // Append the second parameter(element) to the first one
+	  }
+  
+	function load() {
+		const table = document.getElementById('leaderboard_normal');
+		const url = 'https://api.kingofthehat.com/leaderboard';
+		fetch(url)
+		  .then((resp) => resp.json()) // Transform the data into json
+		  .then(function(data) {
+			let authors = data.users; // Get the results
+			return authors.map(function(user) { // Map through the results and for each run the code below
+			   let row = createNode('tr'),
+				  place = createNode('th'),
+				  name = createNode('td'),
+				  points = createNode('td');
+			  place.innerHTML = `${user.place}`;
+			  name.innerHTML = `$${user.discordHandle}`; // Make the HTML of our span to be the first and last name of our author
+			  points.innerHTML = `${user.elo}`;
+			  append(row, place)
+			  append(row, name)
+			  append(row, points)
+			  append(table, row);
+			})
+		  })
+		  .catch(function(error) {
+			console.warning(error);
+		  });
+	  }
+	  window.onload = load;
+  </script>
+  </body>
+</html>
