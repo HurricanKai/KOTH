@@ -35,7 +35,60 @@
 		</tbody>
 	  </table>
     </div>
-	
+  </section>
+	<section class="section">
+    <div class="container">
+      <h1 class="title">
+        Brilliance Leaderboard
+      </h1>
+	  <table class="table">
+		<thead>
+			<tr>
+				<th>Place</th>
+				<th>Name</th>
+				<th>Points</th>
+			</tr>
+		</thead>
+		<tbody id="leaderboard_brilliance">
+		</tbody>
+	  </table>
+    </div>
+	</section>
+	<section class="section">
+    <div class="container">
+      <h1 class="title">
+        Bravery Leaderboard
+      </h1>
+	  <table class="table">
+		<thead>
+			<tr>
+				<th>Place</th>
+				<th>Name</th>
+				<th>Points</th>
+			</tr>
+		</thead>
+		<tbody id="leaderboard_bravery">
+		</tbody>
+	  </table>
+    </div>
+	</section>
+	<section class="section">
+    <div class="container">
+      <h1 class="title">
+        Balance Leaderboard
+      </h1>
+	  <table class="table">
+		<thead>
+			<tr>
+				<th>Place</th>
+				<th>Name</th>
+				<th>Points</th>
+			</tr>
+		</thead>
+		<tbody id="leaderboard_balance">
+		</tbody>
+	  </table>
+    </div>
   </section>
   <script>
 	  function createNode(element) {
@@ -45,8 +98,9 @@
 	  function append(parent, el) {
 		return parent.appendChild(el); // Append the second parameter(element) to the first one
 	  }
-  
-	function load() {
+	
+	function loadnormal()
+	{
 		const table = document.getElementById('leaderboard_normal');
 		const url = 'https://api.kingofthehat.com/leaderboard';
 		fetch(url)
@@ -59,7 +113,7 @@
 				  name = createNode('td'),
 				  points = createNode('td');
 			  place.innerHTML = `${user.place}`;
-			  name.innerHTML = `$${user.discordHandle}`; // Make the HTML of our span to be the first and last name of our author
+			  name.innerHTML = `${user.discordHandle}`; // Make the HTML of our span to be the first and last name of our author
 			  points.innerHTML = `${user.elo}`;
 			  append(row, place)
 			  append(row, name)
@@ -70,6 +124,40 @@
 		  .catch(function(error) {
 			console.warning(error);
 		  });
+	}
+
+		function loadhouse(house)
+	{
+		let table = document.getElementById('leaderboard_' + house);
+		let url = 'https://api.kingofthehat.com/leaderboard?house=' + house;
+		fetch(url)
+		  .then((resp) => resp.json()) // Transform the data into json
+		  .then(function(data) {
+			let authors = data.users; // Get the results
+			return authors.map(function(user) { // Map through the results and for each run the code below
+			   let row = createNode('tr'),
+				  place = createNode('th'),
+				  name = createNode('td'),
+				  points = createNode('td');
+			  place.innerHTML = `${user.place}`;
+			  name.innerHTML = `${user.discordHandle}`; // Make the HTML of our span to be the first and last name of our author
+			  points.innerHTML = `${user.elo}`;
+			  append(row, place)
+			  append(row, name)
+			  append(row, points)
+			  append(table, row);
+			})
+		  })
+		  .catch(function(error) {
+			console.warning(error);
+		  });
+	}
+  
+	function load() {
+			loadnormal();
+			loadhouse(`brilliance`);
+			loadhouse(`balance`);
+			loadhouse(`bravery`);
 	  }
 	  window.onload = load;
   </script>
