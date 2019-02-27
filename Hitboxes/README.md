@@ -12,8 +12,8 @@
 ![Cole's Place 1](./Cole's%20Place%201.png)
 ![Cole's Place 2](./Cole's%20Place%202.png)
 
-![Shrines Hat 1](./Shrines%20Hat%201.png)
-![Shrines Hat 2](./Shrines%20Hat%202.png)
+![Shrines Of Hat 1](./Shrines%20Of%20Hat%201.png)
+![Shrines Of Hat 2](./Shrines%20Of%20Hat%202.png)
 
 ![The Outer Brim 1](./The%20Outer%20Brim%201.png)
 ![The Outer Brim 2](./The%20Outer%20Brim%202.png)
