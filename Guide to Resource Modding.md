@@ -8,7 +8,7 @@ This is a TODO in the Modloader, so for now, this Document.
 
 We will use a Tool unspecific to KOTH. It is simply capable of loading a Resource File, and Importing/Exporting things from there.
 
-Download it HERE, extract it to some folder, and you should be ready to go!
+Download it [HERE](./UnityExtractor.zip), extract it to some folder, and you should be ready to go!
 
 
 
@@ -24,7 +24,7 @@ Next, you want to find any *Texture2D* (not Sprite) you want to edit. (You might
 
 Select that Texture, click "Plugins" and then "Export to .png/.tga" (select whichever you prefer, i'm using .png)
 
-After saving that Texture to somewhere, you can edit it in any Program. I suggest Asperite, it is made for Pixel art and also supports importing/exporting Animation Sheets, like KOTH is using.
+After saving that Texture to somewhere, you can edit it in any Program. I suggest [Asperite](https://www.aseprite.org/), it is made for Pixel art and also supports importing/exporting Animation Sheets, like KOTH is using. (you can also get it for free [here](https://github.com/aseprite/aseprite/releases) by using the Open-Source Builds)
 
 ### Importing
 
